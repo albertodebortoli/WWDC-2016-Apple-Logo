@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller Swift-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController_Swift" customModule="WWDC_2016_Logo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="1" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="FGa-zB-r9U">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="haP-TF-BOm"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="numberOfSubstitutionsDidChangeWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="sQW-b7-8fl"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.20000000000000001" minValue="0.10000000000000001" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9ME-zh-qpp">
+                                <connections>
+                                    <action selector="timeIntervalDidChangeWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="Dz3-B3-fNX"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time interval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czw-hY-RKF">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sT2-g7-KAg">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="kra-8l-Hk6"/>
+                                    <constraint firstAttribute="height" constant="30" id="tbS-2v-Mdv"/>
+                                </constraints>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3B2-yv-Nyj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of substitutions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnM-Te-GZv">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uhs-oW-hOa">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1803921568627451" green="0.15686274509803921" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="czw-hY-RKF" firstAttribute="centerX" secondItem="bnM-Te-GZv" secondAttribute="centerX" id="3Om-lx-Qi8"/>
+                            <constraint firstItem="9ME-zh-qpp" firstAttribute="height" secondItem="FGa-zB-r9U" secondAttribute="height" id="4Gh-J0-MFU"/>
+                            <constraint firstItem="sT2-g7-KAg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8ZG-MP-kDC"/>
+                            <constraint firstItem="FGa-zB-r9U" firstAttribute="leading" secondItem="bnM-Te-GZv" secondAttribute="trailing" constant="15" id="EGJ-4t-4tJ"/>
+                            <constraint firstItem="czw-hY-RKF" firstAttribute="top" secondItem="bnM-Te-GZv" secondAttribute="bottom" constant="17" id="EmE-FJ-hwJ"/>
+                            <constraint firstItem="FGa-zB-r9U" firstAttribute="centerY" secondItem="bnM-Te-GZv" secondAttribute="centerY" id="Kjt-nJ-wwA"/>
+                            <constraint firstItem="9ME-zh-qpp" firstAttribute="centerY" secondItem="czw-hY-RKF" secondAttribute="centerY" id="NOW-DP-eiN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FGa-zB-r9U" secondAttribute="trailing" id="NlX-64-mYw"/>
+                            <constraint firstItem="9ME-zh-qpp" firstAttribute="height" secondItem="FGa-zB-r9U" secondAttribute="height" id="OJd-9V-z25"/>
+                            <constraint firstItem="sT2-g7-KAg" firstAttribute="top" secondItem="9ME-zh-qpp" secondAttribute="bottom" constant="14" id="OoO-Aa-Kim"/>
+                            <constraint firstItem="9ME-zh-qpp" firstAttribute="centerX" secondItem="FGa-zB-r9U" secondAttribute="centerX" id="PKt-kv-i9Q"/>
+                            <constraint firstItem="9ME-zh-qpp" firstAttribute="leading" secondItem="sT2-g7-KAg" secondAttribute="trailing" constant="-140" id="SWP-ji-koT"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Uhs-oW-hOa" secondAttribute="leading" id="Tih-ql-qwK"/>
+                            <constraint firstItem="FGa-zB-r9U" firstAttribute="leading" secondItem="Uhs-oW-hOa" secondAttribute="trailing" constant="-360" id="U6l-4h-rsF"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="bnM-Te-GZv" secondAttribute="leading" id="Wne-8q-iCp"/>
+                            <constraint firstItem="bnM-Te-GZv" firstAttribute="top" secondItem="Uhs-oW-hOa" secondAttribute="bottom" constant="22" id="X1P-KQ-oiv"/>
+                            <constraint firstItem="9ME-zh-qpp" firstAttribute="width" secondItem="FGa-zB-r9U" secondAttribute="width" id="ama-Zu-955"/>
+                            <constraint firstItem="Uhs-oW-hOa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cT1-cW-fvS"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sT2-g7-KAg" secondAttribute="bottom" constant="13" id="erf-Yd-QOT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Uhs-oW-hOa" secondAttribute="trailing" id="gHX-om-pxm"/>
+                            <constraint firstItem="9ME-zh-qpp" firstAttribute="top" secondItem="FGa-zB-r9U" secondAttribute="bottom" constant="8" id="mZJ-6n-5vT"/>
+                            <constraint firstItem="czw-hY-RKF" firstAttribute="width" secondItem="bnM-Te-GZv" secondAttribute="height" multiplier="60:7" id="rhT-Mx-Tcp"/>
+                            <constraint firstItem="FGa-zB-r9U" firstAttribute="top" secondItem="Uhs-oW-hOa" secondAttribute="bottom" constant="18" id="wWX-y5-QUR"/>
+                            <constraint firstItem="bnM-Te-GZv" firstAttribute="centerY" secondItem="FGa-zB-r9U" secondAttribute="centerY" id="zWt-oH-8VW"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4Gh-J0-MFU"/>
+                                <exclude reference="NOW-DP-eiN"/>
+                                <exclude reference="SWP-ji-koT"/>
+                                <exclude reference="Kjt-nJ-wwA"/>
+                                <exclude reference="U6l-4h-rsF"/>
+                                <exclude reference="zWt-oH-8VW"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="Uhs-oW-hOa" id="saq-MA-LFU"/>
+                        <outlet property="numberOfSubstitutionsSlider" destination="FGa-zB-r9U" id="5DN-Gw-Nc1"/>
+                        <outlet property="timeIntervalSlider" destination="9ME-zh-qpp" id="TNy-zc-ddk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="253" y="429"/>
+        </scene>
+    </scenes>
+</document>
