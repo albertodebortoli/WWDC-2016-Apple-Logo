@@ -17,7 +17,7 @@ class ViewController_Swift: UIViewController, ADBWWDCLogoGeneratorDelegate {
 
     func setup() -> Void {
         
-        let filePath = Bundle.main().pathForResource("AppleLogo-small", ofType: "txt")!
+        let filePath = Bundle.main.path(forResource: "AppleLogo-small", ofType: "txt")!
         do {
             let body = try String(contentsOfFile: filePath)
             generator = ADBWWDCLogoGenerator(body: body, symbols: SymbolFactory().defaultListOfListSymbols())
@@ -31,13 +31,13 @@ class ViewController_Swift: UIViewController, ADBWWDCLogoGeneratorDelegate {
     
     // MARK: ADBWWDCLogoGeneratorDelegate
     
-    func wwdcLogo(generator: ADBWWDCLogoGenerator, didUpdateASCII newString: AttributedString) {
+    func wwdcLogo(generator: ADBWWDCLogoGenerator, didUpdateASCII newString: NSAttributedString) {
         
         let attrString: NSMutableAttributedString = NSMutableAttributedString(attributedString: newString)
-        attrString.addAttributes([NSFontAttributeName: UIFont(name: "Courier New", size: 8)!], range: NSMakeRange(0, attrString.string.characters.count))
+        attrString.addAttributes([NSAttributedStringKey.font: UIFont(name: "Courier New", size: 8)!], range: NSMakeRange(0, attrString.string.count))
         
         UIView.transition(with: label!, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.label!.attributedText = attrString as AttributedString
+            self.label!.attributedText = attrString as NSAttributedString
             }, completion: nil)
     }
     

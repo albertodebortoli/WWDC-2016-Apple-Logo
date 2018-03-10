@@ -20,7 +20,7 @@ func ==(lhs: Index, rhs: Index) -> Bool {
 
 struct Index {
     
-    let value: AttributedString
+    let value: NSAttributedString
     let x, y: Int
     
 }

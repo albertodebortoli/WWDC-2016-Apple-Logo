@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-func + (left: AttributedString, right: AttributedString) -> AttributedString
+func + (left: NSAttributedString, right: NSAttributedString) -> NSAttributedString
 {
     let result = NSMutableAttributedString()
     result.append(left)
@@ -18,7 +18,7 @@ func + (left: AttributedString, right: AttributedString) -> AttributedString
 }
 
 @objc protocol ADBWWDCLogoGeneratorDelegate {
-    func wwdcLogo(generator: ADBWWDCLogoGenerator, didUpdateASCII newString: AttributedString)
+    func wwdcLogo(generator: ADBWWDCLogoGenerator, didUpdateASCII newString: NSAttributedString)
 }
 
 @objc class ADBWWDCLogoGenerator: NSObject {
@@ -60,7 +60,7 @@ func + (left: AttributedString, right: AttributedString) -> AttributedString
         self.listOfIndexes = calculateListOfIndexes()
     }
     
-    func fireTimer() -> Void {
+    @objc func fireTimer() -> Void {
 //        queue.async {
             self.applySubstitution()
 //            DispatchQueue.main.async(execute: {
@@ -88,8 +88,8 @@ func + (left: AttributedString, right: AttributedString) -> AttributedString
         for (x, line) in body.components(separatedBy: "\n").enumerated() {
             var y = 0
             var newLine = [Index]()
-            for char in line.characters {
-                newLine.append(Index(value: AttributedString(string: String(char)), x: x, y: y))
+            for char in line {
+                newLine.append(Index(value: NSAttributedString(string: String(char)), x: x, y: y))
                 y += 1
             }
             retVal.append(newLine)
@@ -101,7 +101,7 @@ func + (left: AttributedString, right: AttributedString) -> AttributedString
     func calculateListOfIndexes() -> [Index] {
         
         var retVal = [Index]()
-        let space = AttributedString(string: " ")
+        let space = NSAttributedString(string: " ")
         
         for (y, row) in internalStructure.enumerated() {
             for (x, index) in row.enumerated() {
@@ -116,7 +116,7 @@ func + (left: AttributedString, right: AttributedString) -> AttributedString
     
     func clearValuesInStructure() -> [[Index]] {
         
-        return internalStructure.map({ $0.map({ (value) -> Index in return Index(value: AttributedString(string: " "), x: value.x, y: value.y) }) })
+        return internalStructure.map({ $0.map({ (value) -> Index in return Index(value: NSAttributedString(string: " "), x: value.x, y: value.y) }) })
     }
     
     func randomIndexes(listOfIndexes: [Index]) -> [Index] {
@@ -130,21 +130,21 @@ func + (left: AttributedString, right: AttributedString) -> AttributedString
         return retVal
     }
     
-    func generateStringFromDataStructure() -> AttributedString {
+    func generateStringFromDataStructure() -> NSAttributedString {
         
         // use flatMap
         
-        var retVal = AttributedString()
+        var retVal = NSAttributedString()
         
         for (_, row) in internalStructure.enumerated() {
-            var mutAttrStr = AttributedString()
+            var mutAttrStr = NSAttributedString()
             
             for (_, index) in row.enumerated() {
                 let attrStr = index.value
                 mutAttrStr = mutAttrStr + attrStr
             }
             
-            mutAttrStr = mutAttrStr + AttributedString(string: "\n")
+            mutAttrStr = mutAttrStr + NSAttributedString(string: "\n")
             
             retVal = retVal + mutAttrStr
         }
@@ -163,7 +163,7 @@ func + (left: AttributedString, right: AttributedString) -> AttributedString
         
         for idx in randoms {
             let s = symbols.randomObject()
-            let len = s.value.characters.count
+            let len = s.value.count
             
             let color = s.associatedColors.randomObject()
             
@@ -172,15 +172,15 @@ func + (left: AttributedString, right: AttributedString) -> AttributedString
                 if (idx.x + len - 1 < internalStructure[idx.y].count) {
                     let valueAtMostRightIndex = internalStructure[idx.y][idx.x + len - 1]
                     
-                    let isContained = listOfIndexes?.contains({ (elem) -> Bool in
+                    let isContained = listOfIndexes?.contains { (elem) -> Bool in
                         elem == valueAtMostRightIndex
-                    })
+                    }
                     
                     if (isContained!) {
                         for i in 0..<len {
-                            let subStr = String((s.value as NSString).substring(from: i).characters.first!)
-                            let attrs = [NSForegroundColorAttributeName : color]
-                            let attrStr = AttributedString(string: subStr, attributes: attrs)
+                            let subStr = String((s.value as NSString).substring(from: i).first!)
+                            let attrs = [NSAttributedStringKey.foregroundColor : color]
+                            let attrStr = NSAttributedString(string: subStr, attributes: attrs)
                             let index = Index(value: attrStr, x: idx.x, y: idx.y)
                             internalStructure[idx.y][idx.x + i] = index
                         }
@@ -188,8 +188,8 @@ func + (left: AttributedString, right: AttributedString) -> AttributedString
                 }
             }
             else {
-                let attrs = [NSForegroundColorAttributeName : color]
-                let attrStr = AttributedString(string: s.value, attributes: attrs)
+                let attrs = [NSAttributedStringKey.foregroundColor : color]
+                let attrStr = NSAttributedString(string: s.value, attributes: attrs)
                 let index = Index(value: attrStr, x: idx.x, y: idx.y)
                 internalStructure[idx.y][idx.x] = index
             }
